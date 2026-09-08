@@ -20,10 +20,33 @@ function App() {
       });
   }, []);
 
+  const handleCheckout = async (stream) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/create-checkout-session`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          stream_id: stream.id,
+          stream_title: stream.title,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url; // Redirects user to Stripe Checkout
+      } else {
+        alert("Failed to initialize payment session.");
+      }
+    } catch (error) {
+      console.error("Payment error:", error);
+      alert("Error redirecting to checkout.");
+    }
+  };
+
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif', backgroundColor: '#0f172a', color: '#fff', minHeight: '100vh' }}>
       <h1>🏆 Sports Streaming Hub</h1>
-      <p>Live portfolio demo powered by FastAPI & React</p>
+      <p>Live portfolio demo powered by FastAPI, React & Stripe</p>
 
       {loading ? (
         <p>Loading streams from live backend...</p>
@@ -34,7 +57,9 @@ function App() {
               <h3>{stream.title}</h3>
               <p>Category: <strong>{stream.category}</strong></p>
               {stream.is_premium ? (
-                <button style={{ backgroundColor: '#f59e0b', color: '#000', border: 'none', padding: '0.5rem 1rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>
+                <button 
+                  onClick={() => handleCheckout(stream)}
+                  style={{ backgroundColor: '#f59e0b', color: '#000', border: 'none', padding: '0.5rem 1rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>
                   Unlock Stream ($4.99)
                 </button>
               ) : (
