@@ -6,8 +6,18 @@ const API_BASE_URL = "https://sports-app-api-rvy4.onrender.com";
 function App() {
   const [streams, setStreams] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
+    // Check for success or canceled status in URL query string
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("success")) {
+      setMessage("🎉 Payment successful! You now have full access to premium streams.");
+    }
+    if (query.get("canceled")) {
+      setMessage("⚠️ Payment canceled. You can try again whenever you are ready.");
+    }
+
     fetch(`${API_BASE_URL}/api/streams`)
       .then((res) => res.json())
       .then((data) => {
@@ -33,7 +43,7 @@ function App() {
 
       const data = await response.json();
       if (data.url) {
-        window.location.href = data.url; // Redirects user to Stripe Checkout
+        window.location.href = data.url;
       } else {
         alert("Failed to initialize payment session.");
       }
@@ -47,6 +57,12 @@ function App() {
     <div style={{ padding: '2rem', fontFamily: 'sans-serif', backgroundColor: '#0f172a', color: '#fff', minHeight: '100vh' }}>
       <h1>🏆 Sports Streaming Hub</h1>
       <p>Live portfolio demo powered by FastAPI, React & Stripe</p>
+
+      {message && (
+        <div style={{ backgroundColor: '#1e293b', border: '1px solid #3b82f6', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', color: '#60a5fa' }}>
+          {message}
+        </div>
+      )}
 
       {loading ? (
         <p>Loading streams from live backend...</p>
