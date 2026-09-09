@@ -30,3 +30,19 @@ sports-app-simulation/
     ├── main.py      # REST Endpoints & Stripe Checkout Session Creator
     └── requirements.txt
 
+## Key Technologies
+
+- **Backend Framework:** FastAPI (Python) running on Uvicorn
+- **Frontend Framework:** React (Vite) with Async/Await Fetch API
+- **Payment Gateway:** Stripe Checkout API & Python SDK
+- **Hosting & Infrastructure:** Render (Backend API Web Service) & Vercel (Frontend App)
+- **Version Control & CI/CD:** Git, GitHub, Automated Deployments
+
+---
+
+## Key Features
+
+- **Live REST API Stream:** Delivers real-time JSON streaming data from the FastAPI backend to the React UI.
+- **Dynamic Payment Unlocks:** Integrated Stripe Checkout session generation for $4.99 premium stream access.
+- **CORS Configured Middleware:** Secure backend cross-origin configuration allowing safe communication with Vercel.
+- **Automated CI/CD Pipeline:** Instant build & deployment triggered on `git push origin main` across Render and Vercel.
