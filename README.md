@@ -29,3 +29,7 @@ sports-app-simulation/
 └── server/          # FastAPI Backend hosted on Render
     ├── main.py      # REST Endpoints & Stripe Checkout Session Creator
     └── requirements.txt
+
+#### Key Technologies
+-** Backend Framework: FastAPI(Python) running on Uvicorn **
+-** Frontend Framework: React(Vite) with ES6
