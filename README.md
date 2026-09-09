@@ -30,6 +30,8 @@ sports-app-simulation/
     ├── main.py      # REST Endpoints & Stripe Checkout Session Creator
     └── requirements.txt
 
+---
+
 ## Key Technologies
 
 - **Backend Framework:** FastAPI (Python) running on Uvicorn
