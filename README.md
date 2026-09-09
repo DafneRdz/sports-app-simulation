@@ -19,7 +19,7 @@ A full-stack sports streaming web application featuring live REST API endpoints,
 ## Architecture & Tech Stack
 
 ### Monorepo Structure
-```text
+text
 sports-app-simulation/
 ├── client/          # React (Vite) Frontend hosted on Vercel
 │   ├── src/
@@ -27,24 +27,25 @@ sports-app-simulation/
 │   │   └── App.css
 │   └── package.json
 └── server/          # FastAPI Backend hosted on Render
-    ├── main.py      # REST Endpoints & Stripe Checkout Session Creator
-    └── requirements.txt
+├── main.py      # REST Endpoints & Stripe Checkout Session Creator
+└── requirements.txt
 
 ---
 
-## Key Technologies
+## 🛠️ Key Technologies
 
 - **Backend Framework:** FastAPI (Python) running on Uvicorn
-- **Frontend Framework:** React (Vite) with Async/Await Fetch API
+- **Frontend Framework:** React (Vite) with ES6 Promises & Hooks
 - **Payment Gateway:** Stripe Checkout API & Python SDK
 - **Hosting & Infrastructure:** Render (Backend API Web Service) & Vercel (Frontend App)
-- **Version Control & CI/CD:** Git, GitHub, Automated Deployments
+- **Version Control:** Git, GitHub, Automated Continuous Deployments
 
 ---
 
-## Key Features
+## ✨ Key Features
 
 - **Live REST API Stream:** Delivers real-time JSON streaming data from the FastAPI backend to the React UI.
 - **Dynamic Payment Unlocks:** Integrated Stripe Checkout session generation for $4.99 premium stream access.
 - **CORS Configured Middleware:** Secure backend cross-origin configuration allowing safe communication with Vercel.
 - **Automated CI/CD Pipeline:** Instant build & deployment triggered on `git push origin main` across Render and Vercel.
+  
